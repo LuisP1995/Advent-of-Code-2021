@@ -17,6 +17,8 @@ fn main() {
     println!("increases found were {}", solution);
 } 
 
+// Passes a filename and a container where the data from the file
+// will be appended to the container passed
 fn load_data(filename: &String,container :&mut Vec<i32>){
 
     println!("reading a file {}", filename);
@@ -28,23 +30,21 @@ fn load_data(filename: &String,container :&mut Vec<i32>){
     for (_index, line) in reader.lines().enumerate(){
         let line = line.unwrap();
         container.push(line.parse::<i32>().unwrap());
-        //println!("current data in line {}", line);
     }
 }
 
+// Runs and solves the Part a of day1 for advent of code
 fn solve_day1(values: &mut Vec<i32>, counter: &mut i32) -> i32{
     let mut previous_value = values[0];
     for &current_value in values.iter() {
+        // The data will never be the same as the it is always increasing
+        // on each iteration
         if current_value == previous_value{
             continue;
-            // *counter +=1;
-            // previous_value = current_value;
         }else if current_value > previous_value{
             *counter +=1;
-
         }
         previous_value = current_value;
-        println!("{}", previous_value);
     }
     return *counter;
 }
