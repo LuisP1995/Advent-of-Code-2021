@@ -13,9 +13,9 @@ fn main() {
     let mut data = Vec::new();
     println!("Opening a file");
     load_data(&filename, &mut data);
-    let solution = solve_day1(&mut data, &mut counter);
+    let solution = solve_day1_parta(&mut data, &mut counter);
     println!("increases found were {}", solution);
-} 
+}
 
 // Passes a filename and a container where the data from the file
 // will be appended to the container passed
@@ -33,8 +33,8 @@ fn load_data(filename: &String,container :&mut Vec<i32>){
     }
 }
 
-// Runs and solves the Part a of day1 for advent of code
-fn solve_day1(values: &mut Vec<i32>, counter: &mut i32) -> i32{
+// Runs and solves the part a of day1 for advent of code
+fn solve_day1_parta(values: &mut Vec<i32>, counter: &mut i32) -> i32{
     let mut previous_value = values[0];
     for &current_value in values.iter() {
         // The data will never be the same as the it is always increasing
@@ -47,4 +47,9 @@ fn solve_day1(values: &mut Vec<i32>, counter: &mut i32) -> i32{
         previous_value = current_value;
     }
     return *counter;
+}
+
+// Runs and solves the second part of day 1
+fn solve_day1_partb(){
+
 }
